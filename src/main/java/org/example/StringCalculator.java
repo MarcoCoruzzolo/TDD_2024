@@ -14,7 +14,8 @@ public class StringCalculator {
     }
     String numbersConSoloVirgole = numbers.replace("\n", SEPARATORE_VIRGOLA);
     if(isDoppioSeparatore(numbersConSoloVirgole)) {
-      return "Number expected but '\n' found at position 6.";
+      int posizioneErrore = numbersConSoloVirgole.indexOf(",,") + 1;
+      return "Number expected but '\n' found at position " + posizioneErrore +".";
     }
     String[] arrayDiNumeri = map(numbersConSoloVirgole);
     return somma(arrayDiNumeri);
