@@ -51,12 +51,21 @@ class StringCalculatorTest {
   }
 
   @Test
-  public void calcolaSomma_stringaConNewLineEVirgola_messaggioDiErrore() {
+  public void calcolaSomma_stringaConVirgolaENewLine_messaggioDiErrore() {
     StringCalculator stringCalculator = new StringCalculator();
 
     String actual = stringCalculator.add("175.2,\n35");
 
     Assertions.assertThat(actual).isEqualTo("Number expected but '\n' found at position 6.");
+  }
+
+  @Test
+  public void calcolaSomma_stringaConNewLineEVirgola_messaggioDiErrore() {
+    StringCalculator stringCalculator = new StringCalculator();
+
+    String actual = stringCalculator.add("175.2,35\n,3");
+
+    Assertions.assertThat(actual).isEqualTo("Number expected but ',' found at position 9.");
   }
 
 /*
