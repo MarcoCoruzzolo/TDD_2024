@@ -14,6 +14,9 @@ public class StringCalculator {
     if (numbers.isEmpty()) {
       return "0";
     }
+    if(String.valueOf(numbers.charAt(numbers.length() - 1)).equals(SEPARATORE_VIRGOLA)) {
+      return "Number expected but EOF found.";
+    }
     String numbersConSoloVirgole = numbers.replace(SEPARATORE_NEW_LINE, SEPARATORE_VIRGOLA);
     if(isDoppioSeparatore(numbersConSoloVirgole)) {
       return messaggioDiErrore(numbers, numbersConSoloVirgole);

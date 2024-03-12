@@ -68,16 +68,15 @@ class StringCalculatorTest {
     Assertions.assertThat(actual).isEqualTo("Number expected but ',' found at position 9.");
   }
 
-/*
   @Test
   public void calcolaSomma_stringaConValoreErrato_errore() {
     StringCalculator stringCalculator = new StringCalculator();
 
     String actual = stringCalculator.add("1,3,");
 
-    Assertions.assertThat(actual).isEqualTo("Number expected but EOF found");
+    Assertions.assertThat(actual).isEqualTo("Number expected but EOF found.");
   }
 
- */
+
 
 }
