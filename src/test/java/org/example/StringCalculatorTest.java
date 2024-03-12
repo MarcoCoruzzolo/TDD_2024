@@ -40,6 +40,16 @@ class StringCalculatorTest {
 
     Assertions.assertThat(actual).isEqualTo("86.0");
   }
+
+  @Test
+  public void calcolaSomma_stringaConNewLineEVirgola_stringaConSommaDeiValori() {
+    StringCalculator stringCalculator = new StringCalculator();
+
+    String actual = stringCalculator.add("1\n2,3");
+
+    Assertions.assertThat(actual).isEqualTo("6");
+  }
+
 /*
   @Test
   public void calcolaSomma_stringaConValoreErrato_errore() {

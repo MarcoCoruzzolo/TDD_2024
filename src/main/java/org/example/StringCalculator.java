@@ -12,7 +12,7 @@ public class StringCalculator {
     if (numbers.isEmpty()) {
       return "0";
     }
-    String[] arrayDiNumeri = map(numbers, SEPARATORE_VIRGOLA);
+    String[] arrayDiNumeri = map(numbers);
     return somma(arrayDiNumeri);
   }
 
@@ -25,8 +25,9 @@ public class StringCalculator {
     return somma.toString();
   }
 
-  private static String[] map(String numbers, String separatoreVirgola) {
-    return numbers.split(separatoreVirgola);
+  private static String[] map(String numbers) {
+    String numbersConSoloVirgole = numbers.replace("\n", SEPARATORE_VIRGOLA);
+    return numbersConSoloVirgole.split(SEPARATORE_VIRGOLA);
   }
 
   private static String ultimoCarattere(String s) {
