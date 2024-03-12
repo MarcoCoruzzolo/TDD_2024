@@ -50,6 +50,15 @@ class StringCalculatorTest {
     Assertions.assertThat(actual).isEqualTo("6");
   }
 
+  @Test
+  public void calcolaSomma_stringaConNewLineEVirgola_messaggioDiErrore() {
+    StringCalculator stringCalculator = new StringCalculator();
+
+    String actual = stringCalculator.add("175.2,\n35");
+
+    Assertions.assertThat(actual).isEqualTo("Number expected but '\n' found at position 6.");
+  }
+
 /*
   @Test
   public void calcolaSomma_stringaConValoreErrato_errore() {

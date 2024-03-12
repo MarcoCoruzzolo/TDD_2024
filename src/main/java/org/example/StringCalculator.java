@@ -12,8 +12,16 @@ public class StringCalculator {
     if (numbers.isEmpty()) {
       return "0";
     }
-    String[] arrayDiNumeri = map(numbers);
+    String numbersConSoloVirgole = numbers.replace("\n", SEPARATORE_VIRGOLA);
+    if(isDoppioSeparatore(numbersConSoloVirgole)) {
+      return "Number expected but '\n' found at position 6.";
+    }
+    String[] arrayDiNumeri = map(numbersConSoloVirgole);
     return somma(arrayDiNumeri);
+  }
+
+  private static boolean isDoppioSeparatore(String numbersConSoloVirgole) {
+    return numbersConSoloVirgole.contains(",,");
   }
 
   private static String somma(String[] arrayDiNumeri) {
@@ -25,8 +33,7 @@ public class StringCalculator {
     return somma.toString();
   }
 
-  private static String[] map(String numbers) {
-    String numbersConSoloVirgole = numbers.replace("\n", SEPARATORE_VIRGOLA);
+  private static String[] map(String numbersConSoloVirgole) {
     return numbersConSoloVirgole.split(SEPARATORE_VIRGOLA);
   }
 
