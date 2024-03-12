@@ -5,19 +5,28 @@ import java.math.BigDecimal;
 public class StringCalculator {
 
 
-  public String add(String s) {
+  public static final String SEPARATORE_VIRGOLA = ",";
 
-    if(s.isEmpty()) {
+  public String add(String numbers) {
+
+    if (numbers.isEmpty()) {
       return "0";
-    } else {
-      BigDecimal somma = BigDecimal.ZERO;
-      String[] splits = s.split(",");
-      for(String split : splits) {
-        BigDecimal bd = new BigDecimal(split);
-        somma = somma.add(bd);
-      }
-     return somma.toString();
     }
+    String[] arrayDiNumeri = map(numbers, SEPARATORE_VIRGOLA);
+    return somma(arrayDiNumeri);
+  }
+
+  private static String somma(String[] arrayDiNumeri) {
+    BigDecimal somma = BigDecimal.ZERO;
+    for (String split : arrayDiNumeri) {
+      BigDecimal bd = new BigDecimal(split);
+      somma = somma.add(bd);
+    }
+    return somma.toString();
+  }
+
+  private static String[] map(String numbers, String separatoreVirgola) {
+    return numbers.split(separatoreVirgola);
   }
 
   private static String ultimoCarattere(String s) {
