@@ -10,11 +10,10 @@ public class StringCalculator {
   public static final String SEPARATORE_DOPPIA_VIRGOLA = ",,";
 
   public String add(String numbers) {
-
     if (numbers.isEmpty()) {
       return "0";
     }
-    if(String.valueOf(numbers.charAt(numbers.length() - 1)).equals(SEPARATORE_VIRGOLA)) {
+    if(isUltimoCarattereSeparatore(numbers)) {
       return "Number expected but EOF found.";
     }
     String numbersConSoloVirgole = numbers.replace(SEPARATORE_NEW_LINE, SEPARATORE_VIRGOLA);
@@ -23,6 +22,15 @@ public class StringCalculator {
     }
     String[] arrayDiNumeri = map(numbersConSoloVirgole);
     return somma(arrayDiNumeri);
+  }
+
+  private static boolean isUltimoCarattereSeparatore(String numbers) {
+    return getUltimoCarattere(numbers).equals(SEPARATORE_VIRGOLA) ||
+        getUltimoCarattere(numbers).equals(SEPARATORE_NEW_LINE);
+  }
+
+  private static String getUltimoCarattere(String numbers) {
+    return String.valueOf(numbers.charAt(numbers.length() - 1));
   }
 
   private static String messaggioDiErrore(String numbers, String numbersConSoloVirgole) {
@@ -49,6 +57,6 @@ public class StringCalculator {
   }
 
   private static String ultimoCarattere(String s) {
-    return String.valueOf(s.charAt(s.length() - 1));
+    return getUltimoCarattere(s);
   }
 }

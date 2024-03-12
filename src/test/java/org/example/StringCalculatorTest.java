@@ -69,10 +69,19 @@ class StringCalculatorTest {
   }
 
   @Test
-  public void calcolaSomma_stringaConValoreErrato_errore() {
+  public void calcolaSomma_stringaConUltimoValoreSeparatoreVirgola_errore() {
     StringCalculator stringCalculator = new StringCalculator();
 
     String actual = stringCalculator.add("1,3,");
+
+    Assertions.assertThat(actual).isEqualTo("Number expected but EOF found.");
+  }
+
+  @Test
+  public void calcolaSomma_stringaConUltimoValoreSeparatoreNewLine_errore() {
+    StringCalculator stringCalculator = new StringCalculator();
+
+    String actual = stringCalculator.add("1,3\n");
 
     Assertions.assertThat(actual).isEqualTo("Number expected but EOF found.");
   }
