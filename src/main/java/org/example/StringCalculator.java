@@ -6,23 +6,30 @@ public class StringCalculator {
 
 
   public static final String SEPARATORE_VIRGOLA = ",";
+  public static final String SEPARATORE_NEW_LINE = "\n";
+  public static final String SEPARATORE_DOPPIA_VIRGOLA = ",,";
 
   public String add(String numbers) {
 
     if (numbers.isEmpty()) {
       return "0";
     }
-    String numbersConSoloVirgole = numbers.replace("\n", SEPARATORE_VIRGOLA);
+    String numbersConSoloVirgole = numbers.replace(SEPARATORE_NEW_LINE, SEPARATORE_VIRGOLA);
     if(isDoppioSeparatore(numbersConSoloVirgole)) {
-      int posizioneErrore = numbersConSoloVirgole.indexOf(",,") + 1;
-      return "Number expected but '"+ numbers.charAt(posizioneErrore) +"' found at position " + posizioneErrore +".";
+      return messaggioDiErrore(numbers, numbersConSoloVirgole);
     }
     String[] arrayDiNumeri = map(numbersConSoloVirgole);
     return somma(arrayDiNumeri);
   }
 
+  private static String messaggioDiErrore(String numbers, String numbersConSoloVirgole) {
+    int posizioneErrore = numbersConSoloVirgole.indexOf(SEPARATORE_DOPPIA_VIRGOLA) + 1;
+    return "Number expected but '" + numbers.charAt(posizioneErrore) + "' found at position "
+        + posizioneErrore + ".";
+  }
+
   private static boolean isDoppioSeparatore(String numbersConSoloVirgole) {
-    return numbersConSoloVirgole.contains(",,");
+    return numbersConSoloVirgole.contains(SEPARATORE_DOPPIA_VIRGOLA);
   }
 
   private static String somma(String[] arrayDiNumeri) {
